@@ -137,7 +137,8 @@ namespace AngleSharp.Io.Cookie
         public WebCookie FindCookie(String domain, String path, String key)
         {
             domain = CanonicalDomain(domain);
-            return _cookies.FirstOrDefault(cookie => cookie.Domain.Is(domain) && cookie.Path.Is(path) && cookie.Key.Is(key));
+            var cookies = _cookies.ToList();
+            return cookies.FirstOrDefault(cookie => cookie.Domain.Is(domain) && cookie.Path.Is(path) && cookie.Key.Is(key));
         }
 
         /// <summary>

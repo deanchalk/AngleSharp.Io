@@ -24,7 +24,8 @@ namespace AngleSharp.Io.Cookie
             data.Append("# http://www.netscape.com/newsref/std/cookie_spec.html\n");
             data.Append("# This is a generated file!  Do not edit.\n\n");
 
-            foreach (var cookie in cookies)
+            var localCookies = cookies.ToList();
+            foreach (var cookie in localCookies)
             {
                 var cookie_domain = cookie.Domain;
                 var head = httpOnlyExtension && cookie.IsHttpOnly ? "#HttpOnly_" : String.Empty;
